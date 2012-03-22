@@ -25,16 +25,16 @@ class sensu::server {
     require => File['/etc/rabbitmq/ssl'],
   }
 
-  file { '/etc/rabbitmq/ssl/cert.pem':
+  file { '/etc/rabbitmq/ssl/server_cert.pem':
     ensure  => file,
-    source  => 'puppet:///modules/sensu/cert.pem',
+    source  => 'puppet:///modules/sensu/server_cert.pem',
     mode    => '0644',
     require => File['/etc/rabbitmq/ssl'],
   }
 
-  file { '/etc/rabbitmq/ssl/key.pem':
+  file { '/etc/rabbitmq/ssl/server_key.pem':
     ensure  => file,
-    source  => 'puppet:///modules/sensu/key.pem',
+    source  => 'puppet:///modules/sensu/server_key.pem',
     mode    => '0644',
     require => File['/etc/rabbitmq/ssl'],
   }
