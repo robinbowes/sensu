@@ -1,7 +1,14 @@
 {
   "rabbitmq": {
+    "ssl": {
+      "private_key_file": "<%= client_key %>",
+      "cert_chain_file": "<%= client_cert %>"
+    },
     "host": "<%= rabbitmq_host %>",
-    "port": <%= rabbitmq_port %>
+    "port": <%= rabbitmq_port %>,
+    "user": <%= rabbitmq_user %>,
+    "password": <%= rabbitmq_password %>,
+    "vhost": <%= rabbitmq_vhost %>
   },
   "redis": {
     "host": "<%= redis_host %>",
@@ -11,26 +18,10 @@
     "host": "<%= api_host %>",
     "port": <%= api_port %>
   },
-  "handlers": {
-    "default": "/etc/sensu/handlers/default"
-  },
   "dashboard": {
     "host": "<%= dashboard_host %>",
     "port": <%= dashboard_port %>,
     "user": "<%= dashboard_user %>",
     "password": "<%= dashboard_password %>"
-  },
-  "checks": {
-    "puppet_agent": {
-      "notification": "Puppet agent daemon is not running.",
-      "command": "/etc/sensu/plugins/puppet_agent.rb",
-      "subscribers": [ "puppet_agent" ],
-      "interval": 60
-    }
-  },
-  "client": {
-    "name": "<%= hostname %>",
-    "address": "<%= ipaddress %>",
-    "subscriptions": [ "puppet_agent" ]
   }
 }

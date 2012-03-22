@@ -25,9 +25,20 @@ class sensu {
     ensure  => directory,
   }
 
+  file { '/etc/sensu/conf.d':
+    ensure  => directory,
+    mode    => '0755',
+    require => File['/etc/sensu'],
+  }
+
   file { '/etc/sensu/plugins':
     ensure  => directory,
     mode    => '0755',
+    require => File['/etc/sensu'],
+  }
+
+  file { '/etc/sensu/ssl':
+    ensure  => directory,
     require => File['/etc/sensu'],
   }
 
@@ -36,11 +47,6 @@ class sensu {
     mode    => '0755',
     owner   => $user,
     require => User[$user],
-  }
-
-  file { '/etc/sensu/ssl':
-    ensure  => directory,
-    require => File['/etc/sensu'],
   }
 
   file { '/etc/sensu/plugins/puppet_agent.rb':
@@ -66,6 +72,13 @@ class sensu {
     content => template('sensu/config.json.erb'),
     mode    => '0644',
     require => File['/etc/sensu'],
+  }
+
+  file { '/etc/sensu/conf.d/client.json':
+    ensure  => file,
+    content => template('sensu/client.json.erb'),
+    mode    => '0644',
+    require => File['/etc/sensu/conf.d'],
   }
 
 }

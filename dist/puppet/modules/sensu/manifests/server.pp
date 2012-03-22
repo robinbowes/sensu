@@ -18,9 +18,9 @@ class sensu::server {
     require => Package['rabbitmq-server'],
   }
 
-  file { '/etc/rabbitmq/ssl/server_cacert.pem':
+  file { '/etc/rabbitmq/ssl/cacert.pem':
     ensure  => file,
-    source  => 'puppet:///modules/sensu/server_cacert.pem',
+    source  => 'puppet:///modules/sensu/cacert.pem',
     mode    => '0644',
     require => File['/etc/rabbitmq/ssl'],
   }

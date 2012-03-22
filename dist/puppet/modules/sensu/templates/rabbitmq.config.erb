@@ -1,7 +1,7 @@
 [
   {rabbit, [
     {ssl_listeners, [<%= rabbitmq_port %>]},
-    {ssl_options, [{cacertfile,"/etc/rabbitmq/ssl/server_cacert.pem"},
+    {ssl_options, [{cacertfile,"/etc/rabbitmq/ssl/cacert.pem"},
                    {certfile,"/etc/rabbitmq/ssl/server_cert.pem"},
                    {keyfile,"/etc/rabbitmq/ssl/server_key.pem"},
                    {verify,verify_peer},

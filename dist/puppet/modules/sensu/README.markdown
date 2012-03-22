@@ -17,7 +17,7 @@ To install the server or API:
    include sensu::api
 
 It requires you create/copy in your proposed RabbitMQ CA cert,
-certificate and key to files/{server_cacert.pem,server_key.pem,server_cert.pem}
+certificate and key to files/{cacert.pem,server_key.pem,server_cert.pem}
 
 Author
 ---
